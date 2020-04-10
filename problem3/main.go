@@ -14,6 +14,7 @@ func find_out_prime(number int) []int {
 				prime_numbers = append(prime_numbers, i)
 
 				print(i)
+				print("\n")
 				if prime_numbers[0]*prime_numbers[len(prime_numbers)-1] >= number {
 					return prime_numbers
 				}

@@ -1,20 +1,38 @@
 package main
 
 import (
-	"fmt"
 	"math"
 )
 
 var digits = []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 
 func main() {
+	previous := 0
 	for number1 := range forXDigits(3) {
 		for number2 := range forXDigits(3) {
-			print(number1 * number2)
-			print("\n")
-			fmt.Printf("1:%d 2:%d \n", number1, number2)
+			if number1 > 0 && number2 > 0 {
+				multiplication := number1 * number2
+				if is_palindrome(multiplication) && multiplication > previous {
+					print(multiplication)
+					print("\n")
+					previous = multiplication
+				}
+			}
 		}
 	}
+}
+func is_palindrome(number int) bool {
+	numbers := []int{}
+	for i := 1; i <= number; i *= 10 {
+		digit := number / i % 10
+		numbers = append(numbers, digit)
+	}
+	for i, _ := range numbers {
+		if numbers[i] != numbers[len(numbers)-1-i] {
+			return false
+		}
+	}
+	return true
 }
 
 func forXDigits(number int) <-chan int {
