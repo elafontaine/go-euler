@@ -5,7 +5,7 @@ func main() {
 	index := 2
 	sum := 0
 
-	for value < 4000000 {
+	for value < 4_000_000 {
 		value = fibonacci(index)
 		if value%2 == 0 {
 			sum += value
